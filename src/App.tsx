@@ -2,6 +2,7 @@
 import { css, jsx, Global } from '@emotion/core';
 import emotionReset from 'emotion-reset';
 import { Work } from './containers/work';
+import { HelloText } from './containers/textWork';
 
 const globalStyles = css`
     ${emotionReset}
@@ -14,10 +15,11 @@ const globalStyles = css`
 `;
 
 const App = () => (
-    <div>
-        <Global styles={globalStyles} />
-        <Work />
-    </div>
+  <div>
+    <Global styles={globalStyles} />
+    <HelloText />
+    {/* <Work /> */}
+  </div>
 );
 
 export default App;
