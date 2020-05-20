@@ -2,7 +2,7 @@
 import { css, jsx, Global } from '@emotion/core';
 import emotionReset from 'emotion-reset';
 import { Work } from './containers/work';
-import { HelloText } from './containers/textWork';
+import { HelloText } from './containers/gravity/TextWork01';
 
 const globalStyles = css`
     ${emotionReset}
