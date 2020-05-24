@@ -6,6 +6,7 @@ import { HelloText } from './containers/gravity/TextWork01';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 //import './css/index.css'
 import { TexturedBox } from './containers/geometry/TexturedBox'
+import { InteractiveCubesOrtho } from 'containers/interactive/InteractiveCubesOrtho';
 
 const globalStyles = css`
     ${emotionReset}
@@ -24,10 +25,12 @@ const App = () => (
       <div>{document.title}</div>
       <Switch>
         <Route path='/1'><TexturedBox /></Route>
+        <Route path='/2'><InteractiveCubesOrtho /></Route>
         <Route path='/gravity01'><HelloText /></Route>
       </Switch>
       <Link to='/'>ホーム画面へ</Link>
       <Link to='/1'>画像貼り付けた箱へ</Link>
+      <Link to='/2'>InteractiveCubesOrtho</Link>
     </BrowserRouter>
     {/* <Work /> */}
   </div>
