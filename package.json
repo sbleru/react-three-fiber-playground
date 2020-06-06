@@ -18,6 +18,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.2.0",
     "react-three-fiber": "^3.0.15",
+    "styled-components": "^5.1.1",
     "three": "^0.110.0",
     "typescript": "3.7.2"
   },
@@ -42,5 +43,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/styled-components": "^5.1.0"
+  }
 }
