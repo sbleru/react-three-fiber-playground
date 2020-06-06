@@ -1,12 +1,11 @@
 /** @jsx jsx */
 import { css, jsx, Global } from '@emotion/core';
 import emotionReset from 'emotion-reset';
-import { Work } from './containers/work';
-import { HelloText } from './containers/gravity/TextWork01';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
-//import './css/index.css'
-import { TexturedBox } from './containers/geometry/TexturedBox'
-import { InteractiveCubesOrtho } from 'containers/interactive/InteractiveCubesOrtho';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { ROUTES } from 'constants/Route';
+import Sidebar from 'components/organisms/Sidebar';
+import styled from 'styled-components';
+import Header from 'components/organisms/Header';
 
 const globalStyles = css`
     ${emotionReset}
@@ -22,18 +21,38 @@ const App = () => (
   <div>
     <Global styles={globalStyles} />
     <BrowserRouter>
-      <div>{document.title}</div>
-      <Switch>
-        <Route path='/1'><TexturedBox /></Route>
-        <Route path='/2'><InteractiveCubesOrtho /></Route>
-        <Route path='/gravity01'><HelloText /></Route>
-      </Switch>
-      <Link to='/'>ホーム画面へ</Link>
-      <Link to='/1'>画像貼り付けた箱へ</Link>
-      <Link to='/2'>InteractiveCubesOrtho</Link>
+      <Wrapper>
+        <Sidebar />
+        <Container>
+          <Header />
+          <Main>
+            <Switch>
+              {ROUTES.map((route) => (
+                <Route key={route.path} exact={route.exact} path={route.path} component={route.component} />
+              ))}
+            </Switch>
+          </Main>
+        </Container>
+      </Wrapper>
     </BrowserRouter>
     {/* <Work /> */}
   </div>
 );
 
 export default App;
+
+const Wrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+`;
+
+const Container = styled.div`
+  width: calc(100% - 200px);
+`;
+
+const Main = styled.main`
+  width: 100%;
+  height: calc(100% - 40px);
+  box-sizing: border-box;
+`;
