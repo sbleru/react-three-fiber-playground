@@ -33,7 +33,8 @@ export const Effects = () => {
   return (
     <effectComposer ref={composer} args={[gl]}>
       <renderPass attachArray="passes" scene={scene} camera={camera} />
-      <sSAOPass attachArray="passes" args={[scene, camera]} kernelRadius={0.6 as any} maxDistance={0.03} />
+      {/* remove because can't move other path */}
+      {/* <sSAOPass attachArray="passes" args={[scene, camera]} kernelRadius={0.6 as any} maxDistance={0.03} /> */}
       <unrealBloomPass attachArray="passes" args={[aspect, 2, 1, 0.991]} />
       <shaderPass
         attachArray="passes"
