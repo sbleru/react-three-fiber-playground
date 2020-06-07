@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { ROUTES } from 'constants/Route';
+import { TexturedBox } from 'containers/geometry/TexturedBox';
 
 
 const Sidebar: React.FC = (props) => {
@@ -12,7 +13,8 @@ const Sidebar: React.FC = (props) => {
   return (
     <Wrapper {...rest}>
       <TitleArea>
-        <Title>THREE</Title>
+        <TexturedBox />
+        <LogoLink to="/"><Title>THREE</Title></LogoLink>
       </TitleArea>
       <Navi>
         <List>
@@ -54,7 +56,7 @@ const TitleArea = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  height: 74px;
+  height: 100px;
   padding: 22px 20px;
   box-sizing: border-box;
   &:after {
@@ -68,9 +70,13 @@ const TitleArea = styled.div`
   }
 `;
 
+const LogoLink = styled(Link)`
+  text-decoration: none;
+`
+
 const Title = styled.h1`
   color: #ffffff;
-  font-size: 2.4rem;
+  font-size: 1.8rem;
   font-weight: bold;
 `;
 

@@ -26,7 +26,7 @@ function Cube() {
 
 const TexturedBox = () => {
   return (
-    <Canvas camera={{ position: [0, 0, 400] }}>
+    <Canvas camera={{ position: [0, 0, 300] }}>
       <Suspense fallback={null}>
         <Cube />
       </Suspense>

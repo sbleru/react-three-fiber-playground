@@ -1,7 +1,6 @@
 import Top from 'components/pages/Top';
 import NotFound from 'components/pages/NotFound';
 import { InteractiveCubesOrtho } from 'containers/interactive/InteractiveCubesOrtho';
-import { TexturedBox } from 'containers/geometry/TexturedBox';
 import { HelloText } from 'containers/gravity/TextWork01';
 
 export const ROUTES = [
@@ -12,14 +11,6 @@ export const ROUTES = [
     title: 'Top',
     category: 'log',
     component: Top,
-  },
-  {
-    path: '/TexturedBox',
-    exact: true,
-    gnavi: true,
-    title: 'TexturedBox',
-    category: 'faq_log',
-    component: TexturedBox,
   },
   {
     path: '/InteractiveCubesOrtho',
