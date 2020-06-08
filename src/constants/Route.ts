@@ -1,6 +1,7 @@
 import Top from 'components/pages/Top';
 import NotFound from 'components/pages/NotFound';
 import { InteractiveCubesOrtho } from 'containers/interactive/InteractiveCubesOrtho';
+import { InteractiveTextsOrtho } from 'containers/interactive/InteractiveTextsOrtho';
 import { HelloText } from 'containers/gravity/TextWork01';
 
 export const ROUTES = [
@@ -19,6 +20,14 @@ export const ROUTES = [
     title: 'InteractiveCubesOrtho',
     category: 'faq_log',
     component: InteractiveCubesOrtho,
+  },
+  {
+    path: '/InteractiveTextsOrtho',
+    exact: true,
+    gnavi: true,
+    title: 'InteractiveTextsOrtho',
+    category: 'faq_log',
+    component: InteractiveTextsOrtho,
   },
   {
     path: '/HelloGravity',

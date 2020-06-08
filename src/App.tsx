@@ -24,7 +24,7 @@ const App = () => (
       <Wrapper>
         <Sidebar />
         <Container>
-          <Header />
+          {/* <Header /> */}
           <Main>
             <Switch>
               {ROUTES.map((route) => (
