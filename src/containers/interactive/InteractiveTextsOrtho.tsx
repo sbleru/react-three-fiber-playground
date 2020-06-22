@@ -32,7 +32,10 @@ const colors = new Array(1000).fill(undefined).map(() => niceColors[3][Math.floo
 const LETTER_BOX_WIDTH = 4
 const FONT_SIZE = 100
 
-const Letters = () => {
+type LettersProps = {
+  text: string
+}
+const Letters: React.FC<LettersProps> = (props) => {
 
   const colorArray = useMemo(() => Float32Array.from(
     new Array(1000).fill(undefined).flatMap((_, i) => tempColor.set(colors[i]).toArray())
@@ -73,7 +76,7 @@ const Letters = () => {
 
   return (
     <instancedMesh ref={ref} args={[null as any, null as any, Math.pow(LETTER_BOX_WIDTH, 2)]}>
-      <textBufferGeometry attach="geometry" args={['a', config]}>
+      <textBufferGeometry attach="geometry" args={[props.text, config]}>
         <instancedBufferAttribute attachObject={['attributes', 'color']} args={[colorArray, 3]} />
       </textBufferGeometry>
       {/* <meshNormalMaterial attach="material" /> */}
@@ -89,20 +92,37 @@ const theme = css`
   background-color: #272727;
 `;
 
-export const InteractiveTextsOrtho = () => {
+export const InteractiveTextsOrtho: React.FC = () => {
+
+  const [text, setText] = useState<string>('hello,world!'[Math.floor(Math.random()*5)])
+  const [openCanvas, setOpenCanvas] = useState<boolean>(true)
+
+  useEffect(() => {
+    var el = document.getElementsByTagName("canvas")[0];
+    console.info(el)
+    el.addEventListener("touchstart", () => setText('hello,world!'[Math.floor(Math.random()*5)]), false);
+  }, [])
+
   return(
     <div css={theme}>
-      <Canvas
-        gl={new THREE.WebGLRenderer({alpha: false})}
-        camera={{ position: [0, 0, 700], near: 5, far: 1400 }}
-        onCreated={({ gl }) => gl.setClearColor('skyblue')}
-      >
-        <ambientLight />
-        <pointLight position={[150, 150, 150]} intensity={0.55} />
-        {/* <Boxes /> */}
-        <Letters />
-        <Effects />
-      </Canvas>
+      {
+        openCanvas
+          ? <Canvas
+              id="canvas"
+              gl={new THREE.WebGLRenderer({alpha: false})}
+              camera={{ position: [0, 0, 700], near: 5, far: 1400 }}
+              onCreated={({ gl }) => gl.setClearColor('skyblue')}
+              onClick={() => setText('hello,world!'[Math.floor(Math.random()*5)])}
+            >
+              <ambientLight />
+              <pointLight position={[150, 150, 150]} intensity={0.55} />
+              <Letters text={text} />
+              <Effects />
+            </Canvas>
+          : <div>
+
+            </div>
+      }
     </div>
   )
 }
