@@ -16,9 +16,9 @@ const colors = ['#A2CCB6', '#FCEEB5', '#EE786E', '#e0feff', 'lightpink', 'lightb
 const random = (i: number) => {
   const r = Math.random()
   return {
-    position: [100 - Math.random() * 200, 100 - Math.random() * 200, i * 1.5] as Args,
+    position: [100 - Math.random() * 500, 100 - Math.random() * 500, 100 - Math.random() * 500] as Args,
     color: colors[Math.round(Math.random() * (colors.length - 1))],
-    scale: [1 + r * 14, 1 + r * 14, 1] as Args,
+    scale: [1 + r * 10, 1 + r * 10, 1] as Args,
     rotation: [0, 0, THREE.Math.degToRad(Math.round(Math.random()) * 45)] as Args,
   }
 }
@@ -35,14 +35,14 @@ const Content = () => {
 
   const font = new THREE.FontLoader().parse(helvetikerRegularFont);
   const textConfig = useMemo(
-    () => ({ font, size: 40, height: 10, curveSegments: 32, bevelEnabled: true, bevelThickness: 6, bevelSize: 2.5, bevelOffset: 0, bevelSegments: 8 }),
+    () => ({ font, size: 40, height: 50, curveSegments: 32, bevelEnabled: true, bevelThickness: 6, bevelSize: 2.5, bevelOffset: 0, bevelSegments: 8 }),
     [font]
   )
 
   const [springs, set] = useSprings(number, (i: number) => ({
     from: random(i),
     ...random(i),
-    config: { mass: 20, tension: 150, friction: 50 }
+    config: { mass: 10, tension: 150, friction: 50 }
   }))
 
   useEffect(() =>
@@ -58,8 +58,8 @@ const Content = () => {
         data.map((d, index) => {
           return (
             <a.mesh key={index} {...springs[index]} castShadow receiveShadow>
-              <boxBufferGeometry attach="geometry" args={d.args} />
-              {/* <textGeometry attach="geometry" args={[d.str, textConfig]} /> */}
+              {/* <boxBufferGeometry attach="geometry" args={d.args} /> */}
+              <textGeometry attach="geometry" args={[d.str, textConfig]} />
               <a.meshStandardMaterial attach="material" color={springs[index].color} roughness={0.75} metalness={0.5} />
             </a.mesh>
           )
@@ -90,14 +90,15 @@ function Lights() {
 const theme = css`
   width: 100%;
   height: 100vh;
-  background-color: #fff;
+  background-color: #272727;
 `;
 
 export const Montage = () => {
 
   return(
     <div css={theme}>
-      <Canvas shadowMap camera={{ position: [0, 0, 80], fov: 100 }}>
+      {/* rotation ref: https://threejs.org/docs/#api/en/math/Euler */}
+      <Canvas shadowMap camera={{ position: [200, 0, 200], rotation: [0, .785, 0], fov: 100 }}>
         <Lights />
         <Content />
       </Canvas>
