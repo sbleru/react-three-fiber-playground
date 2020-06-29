@@ -3,6 +3,7 @@ import NotFound from 'components/pages/NotFound';
 import { InteractiveCubesOrtho } from 'containers/interactive/InteractiveCubesOrtho';
 import { InteractiveTextsOrtho } from 'containers/interactive/InteractiveTextsOrtho';
 import { HelloText } from 'containers/gravity/TextWork01';
+import { Montage } from 'containers/montage/Montage';
 
 export const ROUTES = [
   {
@@ -28,6 +29,14 @@ export const ROUTES = [
     title: 'InteractiveTextsOrtho',
     category: 'faq_log',
     component: InteractiveTextsOrtho,
+  },
+  {
+    path: '/Montage',
+    exact: true,
+    gnavi: true,
+    title: 'Montage',
+    category: 'faq_log',
+    component: Montage,
   },
   {
     path: '/HelloGravity',
