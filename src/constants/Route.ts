@@ -14,6 +14,15 @@ export const ROUTES = [
     category: 'log',
     component: Top,
   },
+  // for github pages
+  {
+    path: '/react-three-fiber-playground',
+    exact: true,
+    gnavi: true,
+    title: 'Top',
+    category: 'log',
+    component: Top,
+  },
   {
     path: '/InteractiveCubesOrtho',
     exact: true,

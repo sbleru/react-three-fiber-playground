@@ -26,7 +26,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && rm -rf docs && mv build docs && yarn replace",
+    "replace": "replace '\"/([fms])' '\"/react-three-fiber-playground/$1' docs/index.html",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
