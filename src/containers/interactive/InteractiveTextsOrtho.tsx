@@ -99,7 +99,6 @@ export const InteractiveTextsOrtho: React.FC = () => {
 
   useEffect(() => {
     var el = document.getElementsByTagName("canvas")[0];
-    console.info(el)
     el.addEventListener("touchstart", () => setText('hello,world!'[Math.floor(Math.random()*5)]), false);
   }, [])
 
