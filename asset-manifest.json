@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.js": "/react-three-fiber-playground/static/js/main.9b90e81f.chunk.js",
+    "main.js.map": "/react-three-fiber-playground/static/js/main.9b90e81f.chunk.js.map",
+    "runtime-main.js": "/react-three-fiber-playground/static/js/runtime-main.19137b2e.js",
+    "runtime-main.js.map": "/react-three-fiber-playground/static/js/runtime-main.19137b2e.js.map",
+    "static/js/2.0c332b58.chunk.js": "/react-three-fiber-playground/static/js/2.0c332b58.chunk.js",
+    "static/js/2.0c332b58.chunk.js.map": "/react-three-fiber-playground/static/js/2.0c332b58.chunk.js.map",
+    "index.html": "/react-three-fiber-playground/index.html",
+    "precache-manifest.8eacf23d830ee92ce6aeecb43fd72381.js": "/react-three-fiber-playground/precache-manifest.8eacf23d830ee92ce6aeecb43fd72381.js",
+    "service-worker.js": "/react-three-fiber-playground/service-worker.js"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.19137b2e.js",
+    "static/js/2.0c332b58.chunk.js",
+    "static/js/main.9b90e81f.chunk.js"
+  ]
+}
