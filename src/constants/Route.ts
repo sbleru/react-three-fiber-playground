@@ -18,7 +18,7 @@ export const ROUTES = [
   {
     path: '/react-three-fiber-playground',
     exact: true,
-    gnavi: true,
+    gnavi: false,
     title: 'Top',
     category: 'log',
     component: Top,
