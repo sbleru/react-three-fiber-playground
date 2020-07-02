@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/react-three-fiber-playground/static/js/main.b1a8a418.chunk.js",
-    "main.js.map": "/react-three-fiber-playground/static/js/main.b1a8a418.chunk.js.map",
+    "main.js": "/react-three-fiber-playground/static/js/main.a8e40ac3.chunk.js",
+    "main.js.map": "/react-three-fiber-playground/static/js/main.a8e40ac3.chunk.js.map",
     "runtime-main.js": "/react-three-fiber-playground/static/js/runtime-main.19137b2e.js",
     "runtime-main.js.map": "/react-three-fiber-playground/static/js/runtime-main.19137b2e.js.map",
     "static/js/2.0c332b58.chunk.js": "/react-three-fiber-playground/static/js/2.0c332b58.chunk.js",
     "static/js/2.0c332b58.chunk.js.map": "/react-three-fiber-playground/static/js/2.0c332b58.chunk.js.map",
     "index.html": "/react-three-fiber-playground/index.html",
-    "precache-manifest.d8b31acf70996c2012b7707d7d05d8c6.js": "/react-three-fiber-playground/precache-manifest.d8b31acf70996c2012b7707d7d05d8c6.js",
+    "precache-manifest.36edfd810aefbf4c346699cd7444b168.js": "/react-three-fiber-playground/precache-manifest.36edfd810aefbf4c346699cd7444b168.js",
     "service-worker.js": "/react-three-fiber-playground/service-worker.js"
   },
   "entrypoints": [
     "static/js/runtime-main.19137b2e.js",
     "static/js/2.0c332b58.chunk.js",
-    "static/js/main.b1a8a418.chunk.js"
+    "static/js/main.a8e40ac3.chunk.js"
   ]
 }
