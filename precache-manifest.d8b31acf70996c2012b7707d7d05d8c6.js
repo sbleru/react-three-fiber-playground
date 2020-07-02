@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9cfa65289ca5e0bb7d08ec740abca6dd",
+    "revision": "7ccc986c64ee23b53f9ba92655f2dba0",
     "url": "/react-three-fiber-playground/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-three-fiber-playground/static/js/2.0c332b58.chunk.js"
   },
   {
-    "revision": "b7e905d700cd5bef9341",
-    "url": "/react-three-fiber-playground/static/js/main.bfb8a703.chunk.js"
+    "revision": "6d30083e1a23b339cf8f",
+    "url": "/react-three-fiber-playground/static/js/main.b1a8a418.chunk.js"
   },
   {
     "revision": "5fa00cb6f96caf014807",
