@@ -56,6 +56,14 @@ export const ROUTES = [
     component: HelloText,
   },
   {
+    path: '/Test',
+    exact: true,
+    gnavi: true,
+    title: 'Test',
+    category: 'faq_log',
+    component: HelloText,
+  },
+  {
     path: '*',
     exact: false,
     gnavi: false,

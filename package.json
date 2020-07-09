@@ -33,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://sbleru.github.io/react-three-fiber-playground/",
+  "homepage": "/react-three-fiber-playground",
   "eslintConfig": {
     "extends": "react-app"
   },
