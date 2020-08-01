@@ -1,7 +1,13 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 import * as React from 'react';
-import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import { ROUTES } from 'constants/Route';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const Header: React.FC = () => {
   const location = useLocation();
@@ -13,28 +19,32 @@ const Header: React.FC = () => {
       return route.gnavi && route.path !== '/' && location.pathname.indexOf(route.path) > -1;
     }
   });
+
+  const classes = styles()
+
   return (
-    <Wrapper>
-      <Title>{route ? route.title : ''}</Title>
-    </Wrapper>
+    <AppBar position="sticky" color="transparent">
+      <Toolbar variant="dense">
+        <IconButton edge="start" css={classes.root} color="inherit" aria-label="menu">
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="h6" color="inherit">
+          <h2 css={classes.title}>{route ? route.title : ''}</h2>
+        </Typography>
+      </Toolbar>
+    </AppBar>
   );
 };
 
-const Wrapper = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 13px 20px 12px;
-  background-color: #f5f6fa;
-  border-bottom: 1px solid #dfe3f2;
-  box-sizing: border-box;
-`;
-
-const Title = styled.h2`
-  color: #222753;
-  font-size: 1.3rem;
-  font-family: 'Noto Sans JP', sans-serif;
-`;
+const styles = () => ({
+  root: css`
+    display: flex;
+  `,
+  title: css`
+    color: #000;
+    font-size: 1.3rem;
+    font-family: 'Noto Sans JP', sans-serif;
+  `,
+})
 
 export default Header;

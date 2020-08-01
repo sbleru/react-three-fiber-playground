@@ -21,10 +21,10 @@ const App = () => (
   <div>
     <Global styles={globalStyles} />
     <BrowserRouter>
+      <Header />
       <Wrapper>
         <Sidebar />
         <Container>
-          {/* <Header /> */}
           <Main>
             <Switch>
               {ROUTES.map((route) => (
