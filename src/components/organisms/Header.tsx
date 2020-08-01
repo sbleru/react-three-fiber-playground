@@ -5,9 +5,9 @@ import { useLocation } from 'react-router-dom';
 import { ROUTES } from 'constants/Route';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { TexturedBox } from 'containers/geometry/TexturedBox';
 
 type Props = {
   handleDrawerOpen: () => void
@@ -28,12 +28,13 @@ const Header: React.FC<Props> = (props) => {
   return (
     <AppBar position="sticky" color="transparent">
       <Toolbar variant="dense">
-        <IconButton edge="start" css={classes.root} color="inherit" aria-label="menu">
-          <MenuIcon onClick={props.handleDrawerOpen} />
+      <div css={classes.root}>
+        <IconButton edge="start" color="inherit" aria-label="menu">
+          <TexturedBox />
+          <MenuIcon css={classes.menuIcon} color="action" onClick={props.handleDrawerOpen} />
         </IconButton>
-        <Typography variant="h6" color="inherit">
-          <h2 css={classes.title}>{route ? route.title : ''}</h2>
-        </Typography>
+        <p css={classes.title}>{route ? route.title : ''}</p>
+      </div>
       </Toolbar>
     </AppBar>
   );
@@ -42,11 +43,16 @@ const Header: React.FC<Props> = (props) => {
 const styles = () => ({
   root: css`
     display: flex;
+    align-items: center;
+  `,
+  menuIcon: css`
+    position: absolute;
   `,
   title: css`
     color: #000;
     font-size: 1.3rem;
     font-family: 'Noto Sans JP', sans-serif;
+    padding: 12px;
   `,
 })
 
