@@ -9,7 +9,10 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-const Header: React.FC = () => {
+type Props = {
+  handleDrawerOpen: () => void
+}
+const Header: React.FC<Props> = (props) => {
   const location = useLocation();
 
   const route = ROUTES.find((route) => {
@@ -26,7 +29,7 @@ const Header: React.FC = () => {
     <AppBar position="sticky" color="transparent">
       <Toolbar variant="dense">
         <IconButton edge="start" css={classes.root} color="inherit" aria-label="menu">
-          <MenuIcon />
+          <MenuIcon onClick={props.handleDrawerOpen} />
         </IconButton>
         <Typography variant="h6" color="inherit">
           <h2 css={classes.title}>{route ? route.title : ''}</h2>
