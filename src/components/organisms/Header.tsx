@@ -31,7 +31,7 @@ const Header: React.FC<Props> = (props) => {
       <div css={classes.root}>
         <IconButton edge="start" color="inherit" aria-label="menu">
           <TexturedBox />
-          <MenuIcon css={classes.menuIcon} color="action" onClick={props.handleDrawerOpen} />
+          <MenuIcon css={classes.menuIcon} style={{color: 'white'}} onClick={props.handleDrawerOpen} />
         </IconButton>
         <p css={classes.title}>{route ? route.title : ''}</p>
       </div>
