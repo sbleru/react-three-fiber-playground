@@ -14,19 +14,19 @@ function Cube() {
     <mesh ref={mesh}>
       <boxBufferGeometry attach="geometry" args={[200, 200, 200]} />
       {/* <meshBasicMaterial attach="material" map={texture} depthTest={false} /> */}
-      <meshBasicMaterial attachArray="material" color="#A2CCB6" />
-      <meshBasicMaterial attachArray="material" color="#FCEEB5" />
-      <meshBasicMaterial attachArray="material" color="#EE786E" />
-      <meshBasicMaterial attachArray="material" color="#E0FEFF" />
-      <meshBasicMaterial attachArray="material" color="lightpink" />
-      <meshBasicMaterial attachArray="material" color="lightblue" />
+      <meshBasicMaterial attachArray="material" color="black" />
+      <meshBasicMaterial attachArray="material" color="black" />
+      <meshBasicMaterial attachArray="material" color="black" />
+      <meshBasicMaterial attachArray="material" color="black" />
+      <meshBasicMaterial attachArray="material" color="black" />
+      <meshBasicMaterial attachArray="material" color="black" />
     </mesh>
   )
 }
 
 const TexturedBox = () => {
   return (
-    <Canvas camera={{ position: [0, 0, 300] }}>
+    <Canvas camera={{ position: [0, 0, 250] }} style={{height: '40px', width: '40px'}}>
       <Suspense fallback={null}>
         <Cube />
       </Suspense>

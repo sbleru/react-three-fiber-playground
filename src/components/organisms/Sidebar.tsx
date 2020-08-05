@@ -1,23 +1,42 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 import * as React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { ROUTES } from 'constants/Route';
-import { TexturedBox } from 'containers/geometry/TexturedBox';
+import { Drawer, IconButton } from '@material-ui/core';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
+type Props = {
+  open: boolean
+  handleDrawerClose: () => void
+}
+const Sidebar: React.FC<Props> = (props) => {
 
-const Sidebar: React.FC = (props) => {
-  const { ...rest } = props;
   const location = useLocation();
+  const history = useHistory()
+  const classes = styles({ open: props.open })
+
+  const handleChangeRouter = (path: string) => {
+    history.push(path)
+    props.handleDrawerClose()
+  }
 
   return (
-    <Wrapper {...rest}>
-      <TitleArea>
-        <TexturedBox />
-        <LogoLink to="/"><Title>THREE</Title></LogoLink>
-      </TitleArea>
-      <Navi>
-        <List>
+    <Drawer
+      css={classes.drawer}
+      variant="temporary"
+      anchor="left"
+      open={props.open}
+      ModalProps={{ onBackdropClick: props.handleDrawerClose }}
+    >
+      <div css={classes.drawerHeader}>
+        <IconButton onClick={props.handleDrawerClose}>
+          <ChevronLeftIcon />
+        </IconButton>
+      </div>
+      <nav css={classes.drawerNav}>
+        <ul>
           {ROUTES.filter((route) => route.gnavi).map((route) => {
             let active = 0;
             if (location.pathname === '/') {
@@ -25,85 +44,62 @@ const Sidebar: React.FC = (props) => {
             } else {
               active = route.path !== '/' && location.pathname.indexOf(route.path) > -1 ? 1 : 0;
             }
+            const routeClasses = routeStyles({ active })
             return (
-              <Item key={route.path}>
-                <SidebarLink to={route.path} active={active}>
+              <li key={route.path}>
+                <p onClick={() => handleChangeRouter(route.path)} css={routeClasses.item}>
                   {route.title}
-                </SidebarLink>
-              </Item>
+                </p>
+              </li>
             );
           })}
-        </List>
-      </Navi>
-    </Wrapper>
+        </ul>
+      </nav>
+    </Drawer>
   );
 };
 
-interface SidebarLinkIF {
-  active: number;
+type StyleProps = {
+  open: boolean
 }
+const styles = (props: StyleProps) => ({
+  drawer: css`
+    width: ${props.open ? '100px' : '0px'};
+    flex-shrink: 0;
+  `,
+  drawerHeader: css`
+    display: 'flex';
+    align-items: 'center';
+    padding: 10px;
+    /* necessary for content to be below app bar */
+    justify-content: 'flex-end';
+  `,
+  drawerNav: css`
+    height: 100%;
+    margin-top: 40px;
+  `,
+})
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-  height: 100vh;
-  background-color: #143d54;
-  box-sizing: border-box;
-`;
-
-const TitleArea = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 100px;
-  padding: 22px 20px;
-  box-sizing: border-box;
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 18px;
-    width: calc(100% - 36px);
-    height: 1px;
-    background-color: #5a608e;
-  }
-`;
-
-const LogoLink = styled(Link)`
-  text-decoration: none;
-`
-
-const Title = styled.h1`
-  color: #ffffff;
-  font-size: 1.8rem;
-  font-weight: bold;
-`;
-
-const Navi = styled.nav`
-  height: 100%;
-  margin-top: 40px;
-`;
-
-const List = styled.ul``;
-
-const Item = styled.li``;
-
-const SidebarLink = styled(Link)`
-  display: inline-block;
-  width: 100%;
-  padding: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  background-color: ${(props: SidebarLinkIF) => (props.active === 0 ? 'inherit' : '#00253a')};
-  color: ${(props: SidebarLinkIF) => (props.active === 0 ? '#8a8a8a' : '#ffffff')};
-  cursor: ${(props: SidebarLinkIF) => (props.active === 0 ? 'pointer' : 'default')};
-  text-decoration: none;
-  box-sizing: border-box;
-  &:hover {
-    color: #ffffff;
-    background-color: #00253a;
-  }
-`;
+type RouteStyleProps = {
+  active: number
+}
+const routeStyles = (props: RouteStyleProps) => ({
+  item: css`
+    display: inline-block;
+    width: 100%;
+    padding: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    background-color: ${props.active === 0 ? 'inherit' : '#00253a'};
+    color: ${props.active === 0 ? '#8a8a8a' : '#ffffff'};
+    cursor: ${props.active === 0 ? 'pointer' : 'default'};
+    text-decoration: none;
+    box-sizing: border-box;
+    &:hover {
+      color: #ffffff;
+      background-color: #00253a;
+    }
+  `,
+})
 
 export default Sidebar;

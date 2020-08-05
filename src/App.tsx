@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { css, jsx, Global } from '@emotion/core';
+import * as React from 'react';
 import emotionReset from 'emotion-reset';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { ROUTES } from 'constants/Route';
@@ -17,27 +18,40 @@ const globalStyles = css`
     }
 `;
 
-const App = () => (
-  <div>
-    <Global styles={globalStyles} />
-    <BrowserRouter>
-      <Wrapper>
-        <Sidebar />
-        <Container>
-          {/* <Header /> */}
-          <Main>
-            <Switch>
-              {ROUTES.map((route) => (
-                <Route key={route.path} exact={route.exact} path={route.path} component={route.component} />
-              ))}
-            </Switch>
-          </Main>
-        </Container>
-      </Wrapper>
-    </BrowserRouter>
-    {/* <Work /> */}
-  </div>
-);
+const App: React.FC = () => {
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+  
+  return (
+    <div>
+      <Global styles={globalStyles} />
+      <BrowserRouter>
+        <Header handleDrawerOpen={handleDrawerOpen} />
+        <Wrapper>
+          <Sidebar open={open} handleDrawerClose={handleDrawerClose} />
+          <Container>
+            <Main>
+              <Switch>
+                {ROUTES.map((route) => (
+                  <Route key={route.path} exact={route.exact} path={route.path} component={route.component} />
+                ))}
+              </Switch>
+            </Main>
+          </Container>
+        </Wrapper>
+      </BrowserRouter>
+      {/* <Work /> */}
+    </div>
+  )
+};
 
 export default App;
 
@@ -48,11 +62,11 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  width: calc(100% - 200px);
+  width: 100%;
 `;
 
 const Main = styled.main`
   width: 100%;
-  height: calc(100% - 40px);
+  height: 100%;
   box-sizing: border-box;
 `;
