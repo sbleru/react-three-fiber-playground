@@ -30,8 +30,8 @@ const Header: React.FC<Props> = (props) => {
       <Toolbar variant="dense">
       <div css={classes.root}>
         <IconButton edge="start" color="inherit" aria-label="menu">
-          <TexturedBox />
-          <MenuIcon css={classes.menuIcon} style={{color: 'white'}} onClick={props.handleDrawerOpen} />
+          {/* <TexturedBox /> */}
+          <MenuIcon css={classes.menuIcon} style={{color: 'primary'}} onClick={props.handleDrawerOpen} />
         </IconButton>
         <p css={classes.title}>{route ? route.title : ''}</p>
       </div>
