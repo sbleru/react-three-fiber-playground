@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/react-three-fiber-playground/static/js/main.1e132c7b.chunk.js",
-    "main.js.map": "/react-three-fiber-playground/static/js/main.1e132c7b.chunk.js.map",
+    "main.js": "/react-three-fiber-playground/static/js/main.0748afca.chunk.js",
+    "main.js.map": "/react-three-fiber-playground/static/js/main.0748afca.chunk.js.map",
     "runtime-main.js": "/react-three-fiber-playground/static/js/runtime-main.0dcc66b4.js",
     "runtime-main.js.map": "/react-three-fiber-playground/static/js/runtime-main.0dcc66b4.js.map",
-    "static/js/2.78f560fd.chunk.js": "/react-three-fiber-playground/static/js/2.78f560fd.chunk.js",
-    "static/js/2.78f560fd.chunk.js.map": "/react-three-fiber-playground/static/js/2.78f560fd.chunk.js.map",
+    "static/js/2.a5651aa1.chunk.js": "/react-three-fiber-playground/static/js/2.a5651aa1.chunk.js",
+    "static/js/2.a5651aa1.chunk.js.map": "/react-three-fiber-playground/static/js/2.a5651aa1.chunk.js.map",
     "index.html": "/react-three-fiber-playground/index.html",
-    "precache-manifest.99efe365c6642333aaf00bfcfba9a1b5.js": "/react-three-fiber-playground/precache-manifest.99efe365c6642333aaf00bfcfba9a1b5.js",
+    "precache-manifest.97e66de436cdc3964dcd62eaaa9a51cf.js": "/react-three-fiber-playground/precache-manifest.97e66de436cdc3964dcd62eaaa9a51cf.js",
     "service-worker.js": "/react-three-fiber-playground/service-worker.js"
   },
   "entrypoints": [
     "static/js/runtime-main.0dcc66b4.js",
-    "static/js/2.78f560fd.chunk.js",
-    "static/js/main.1e132c7b.chunk.js"
+    "static/js/2.a5651aa1.chunk.js",
+    "static/js/main.0748afca.chunk.js"
   ]
 }
