@@ -4,6 +4,7 @@ import { InteractiveCubesOrtho } from 'containers/interactive/InteractiveCubesOr
 import { InteractiveTextsOrtho } from 'containers/interactive/InteractiveTextsOrtho';
 import { HelloText } from 'containers/gravity/TextWork01';
 import { Montage } from 'containers/montage/Montage';
+import { WonderfulChandrasekhar } from 'containers/Installations/WonderfulChandrasekhar';
 
 export const ROUTES = [
   {
@@ -54,6 +55,14 @@ export const ROUTES = [
     title: 'HelloGravity',
     category: 'faq_log',
     component: HelloText,
+  },
+  {
+    path: '/WonderfulChandrasekhar',
+    exact: true,
+    gnavi: true,
+    title: 'WonderfulChandrasekhar',
+    category: 'faq_log',
+    component: WonderfulChandrasekhar,
   },
   {
     path: '*',
