@@ -50,11 +50,11 @@ const Scene = () => {
 
   return (
     <React.Fragment>
-      <mesh scale={[viewport.width, viewport.height, 1]}>
+      <mesh scale={[viewport.width * 2, viewport.height * 2, 1]}>
         <planeGeometry attach="geometry" args={[1, 1]} />
         <a.meshPhongMaterial attach="material" color={color} depthTest={false} />
       </mesh>
-      <group position={[viewport.width / 2, viewport.height / 4, page]} rotation={[0, 0, Math.PI]}>
+      <group position={[viewport.width / 3, viewport.height / 4, page]} rotation={[0, 0, Math.PI]}>
         {transition((props, item, t, i) => (
           <Shape {...item} {...props} />
         ))}
@@ -69,7 +69,8 @@ export const WonderfulChandrasekhar = () => {
       <Canvas
         camera={{
           fov: 80,
-          position: [1000, 0, 2000],
+          position: [2000, 300, 2000],
+          rotation: [0, Math.PI / 10, 0],
           near: 0.1,
           far: 20000
         }}>
