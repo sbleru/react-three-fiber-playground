@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ATagLink } from 'components/atoms/Link';
+import GooBlobs from 'containers/animations/GooBlobs';
 
 const Top: React.FC = (props) => {
   const { ...rest } = props;
@@ -15,6 +16,7 @@ const Top: React.FC = (props) => {
             pathName="react-three-fiber"
           />
         </Text>
+        {/* <GooBlobs /> */}
       </Body>
     </Wrapper>
   );

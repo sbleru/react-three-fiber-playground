@@ -8,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { TexturedBox } from 'containers/geometry/TexturedBox';
+import GooBlobs from 'containers/animations/GooBlobs';
 
 type Props = {
   handleDrawerOpen: () => void
@@ -33,7 +34,9 @@ const Header: React.FC<Props> = (props) => {
         <div css={classes.textureBox} onClick = {() => history.push('/')}>
           <TexturedBox />
         </div>
-        <p css={classes.title}>{route ? route.title : ''}</p>
+        <div css={classes.title}>
+          <p>{route ? route.title : ''}</p>
+        </div>
         <IconButton edge="start" color="inherit" aria-label="menu">
           <MenuIcon css={classes.menuIcon} style={{color: 'primary'}} onClick={props.handleDrawerOpen} />
         </IconButton>
