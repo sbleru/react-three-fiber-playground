@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import * as React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import { ROUTES } from 'constants/Route';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,6 +14,7 @@ type Props = {
 }
 const Header: React.FC<Props> = (props) => {
   const location = useLocation();
+  const history = useHistory();
 
   const route = ROUTES.find((route) => {
     if (location.pathname === '/') {
@@ -29,9 +30,11 @@ const Header: React.FC<Props> = (props) => {
     <AppBar position="fixed" color="transparent" style={{top: 'auto', bottom: 0}}>
       <Toolbar variant="dense">
       <div css={classes.root}>
+        <div css={classes.textureBox} onClick = {() => history.push('/')}>
+          <TexturedBox />
+        </div>
         <p css={classes.title}>{route ? route.title : ''}</p>
         <IconButton edge="start" color="inherit" aria-label="menu">
-          {/* <TexturedBox /> */}
           <MenuIcon css={classes.menuIcon} style={{color: 'primary'}} onClick={props.handleDrawerOpen} />
         </IconButton>
       </div>
@@ -45,6 +48,9 @@ const styles = () => ({
     position: fixed;
     top: auto;
     bottom: 0;
+  `,
+  textureBox: css`
+    cursor: pointer;
   `,
   root: css`
     display: flex;
