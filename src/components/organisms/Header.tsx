@@ -26,14 +26,14 @@ const Header: React.FC<Props> = (props) => {
   const classes = styles()
 
   return (
-    <AppBar position="sticky" color="transparent">
+    <AppBar position="fixed" color="transparent" style={{top: 'auto', bottom: 0}}>
       <Toolbar variant="dense">
       <div css={classes.root}>
+        <p css={classes.title}>{route ? route.title : ''}</p>
         <IconButton edge="start" color="inherit" aria-label="menu">
           {/* <TexturedBox /> */}
           <MenuIcon css={classes.menuIcon} style={{color: 'primary'}} onClick={props.handleDrawerOpen} />
         </IconButton>
-        <p css={classes.title}>{route ? route.title : ''}</p>
       </div>
       </Toolbar>
     </AppBar>
@@ -41,9 +41,15 @@ const Header: React.FC<Props> = (props) => {
 };
 
 const styles = () => ({
+  appBar: css`
+    position: fixed;
+    top: auto;
+    bottom: 0;
+  `,
   root: css`
     display: flex;
     align-items: center;
+    flex-grow: 1;
   `,
   menuIcon: css`
     position: absolute;
@@ -53,6 +59,7 @@ const styles = () => ({
     font-size: 1.3rem;
     font-family: 'Noto Sans JP', sans-serif;
     padding: 12px;
+    flex-grow: 1;
   `,
 })
 
