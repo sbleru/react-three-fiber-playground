@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { ROUTES } from 'constants/Route';
 import { Drawer, IconButton } from '@material-ui/core';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 type Props = {
   open: boolean
@@ -26,15 +26,10 @@ const Sidebar: React.FC<Props> = (props) => {
     <Drawer
       css={classes.drawer}
       variant="temporary"
-      anchor="left"
+      anchor="bottom"
       open={props.open}
       ModalProps={{ onBackdropClick: props.handleDrawerClose }}
     >
-      <div css={classes.drawerHeader}>
-        <IconButton onClick={props.handleDrawerClose}>
-          <ChevronLeftIcon />
-        </IconButton>
-      </div>
       <nav css={classes.drawerNav}>
         <ul>
           {ROUTES.filter((route) => route.gnavi).map((route) => {
@@ -55,6 +50,11 @@ const Sidebar: React.FC<Props> = (props) => {
           })}
         </ul>
       </nav>
+      <div css={classes.drawerHeader}>
+        <IconButton onClick={props.handleDrawerClose}>
+          <ExpandMoreIcon />
+        </IconButton>
+      </div>
     </Drawer>
   );
 };
@@ -68,11 +68,10 @@ const styles = (props: StyleProps) => ({
     flex-shrink: 0;
   `,
   drawerHeader: css`
-    display: 'flex';
-    align-items: 'center';
+    display: flex;
+    align-items: center;
     padding: 10px;
-    /* necessary for content to be below app bar */
-    justify-content: 'flex-end';
+    justify-content: flex-end;
   `,
   drawerNav: css`
     height: 100%;
