@@ -6,6 +6,8 @@ import { useLocation } from 'react-router-dom';
 import { ROUTES } from 'constants/Route';
 import { Drawer, IconButton } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import sample from 'resources/InteractiveCubesOrtho.png'
+import { Img3DCard } from 'components/atoms/3DCard';
 
 type Props = {
   open: boolean
@@ -31,24 +33,25 @@ const Sidebar: React.FC<Props> = (props) => {
       ModalProps={{ onBackdropClick: props.handleDrawerClose }}
     >
       <nav css={classes.drawerNav}>
-        <ul>
+        <div css={classes.listRoot}>
           {ROUTES.filter((route) => route.gnavi).map((route) => {
-            let active = 0;
+            let active = false;
             if (location.pathname === '/') {
-              active = route.path === '/' ? 1 : 0;
+              active = route.path === '/'
             } else {
-              active = route.path !== '/' && location.pathname.indexOf(route.path) > -1 ? 1 : 0;
+              active = route.path !== '/' && location.pathname.indexOf(route.path) > -1
             }
-            const routeClasses = routeStyles({ active })
             return (
-              <li key={route.path}>
-                <p onClick={() => handleChangeRouter(route.path)} css={routeClasses.item}>
-                  {route.title}
-                </p>
-              </li>
+              <div
+                key={route.path}
+                css={classes.listItem(active)}
+                onClick={() => handleChangeRouter(route.path)}
+              >
+                <Img3DCard src={sample} active={active} />
+              </div>
             );
           })}
-        </ul>
+        </div>
       </nav>
       <div css={classes.drawerHeader}>
         <IconButton onClick={props.handleDrawerClose}>
@@ -69,34 +72,33 @@ const styles = (props: StyleProps) => ({
   `,
   drawerHeader: css`
     display: flex;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
     align-items: center;
     padding: 10px;
     justify-content: flex-end;
   `,
   drawerNav: css`
-    height: 100%;
+    height: 400px;
     margin-top: 40px;
   `,
-})
-
-type RouteStyleProps = {
-  active: number
-}
-const routeStyles = (props: RouteStyleProps) => ({
-  item: css`
+  listRoot: css`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 90%;
+    margin: 0 auto;
+  `,
+  listItem: (active: boolean) => css`
     display: inline-block;
-    width: 100%;
-    padding: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    background-color: ${props.active === 0 ? 'inherit' : '#00253a'};
-    color: ${props.active === 0 ? '#8a8a8a' : '#ffffff'};
-    cursor: ${props.active === 0 ? 'pointer' : 'default'};
-    text-decoration: none;
-    box-sizing: border-box;
-    &:hover {
-      color: #ffffff;
-      background-color: #00253a;
+    width: 31%;
+    margin-bottom: 40px;
+    cursor: ${active ? 'default' : 'pointer'};
+    img {
+      width: 100%;
+      border: ${active ? 'solid navy' : null};
+      border-radius: 12px;
     }
   `,
 })
