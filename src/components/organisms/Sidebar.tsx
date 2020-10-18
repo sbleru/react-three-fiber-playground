@@ -7,6 +7,7 @@ import { ROUTES } from 'constants/Route';
 import { Drawer, IconButton } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import sample from 'resources/InteractiveCubesOrtho.png'
+import { Img3DCard } from 'components/atoms/3DCard';
 
 type Props = {
   open: boolean
@@ -34,15 +35,19 @@ const Sidebar: React.FC<Props> = (props) => {
       <nav css={classes.drawerNav}>
         <div css={classes.listRoot}>
           {ROUTES.filter((route) => route.gnavi).map((route) => {
-            let active = 0;
+            let active = false;
             if (location.pathname === '/') {
-              active = route.path === '/' ? 1 : 0;
+              active = route.path === '/'
             } else {
-              active = route.path !== '/' && location.pathname.indexOf(route.path) > -1 ? 1 : 0;
+              active = route.path !== '/' && location.pathname.indexOf(route.path) > -1
             }
             return (
-              <div key={route.path} css={classes.listItem(active)}>
-                <img src={sample} alt={''} onClick={() => handleChangeRouter(route.path)} />
+              <div
+                key={route.path}
+                css={classes.listItem(active)}
+                onClick={() => handleChangeRouter(route.path)}
+              >
+                <Img3DCard src={sample} active={active} />
               </div>
             );
           })}
@@ -85,13 +90,14 @@ const styles = (props: StyleProps) => ({
     max-width: 90%;
     margin: 0 auto;
   `,
-  listItem: (active: number) => css`
+  listItem: (active: boolean) => css`
     display: inline-block;
     width: 31%;
     margin-bottom: 40px;
-    cursor: ${active === 0 ? 'pointer' : 'default'};
-    img{
+    cursor: ${active ? 'default' : 'pointer'};
+    img {
       width: 100%;
+      border: ${active ? 'solid navy' : null};
       border-radius: 12px;
     }
   `,
