@@ -23,6 +23,8 @@ export const ROUTES = [
     title: 'Top',
     category: 'log',
     component: Top,
+    image: require('resources/InteractiveCubesOrtho.png'),
+    imageGif: require('resources/InteractiveCubesOrtho.gif'),
   },
   {
     path: '/InteractiveCubesOrtho',
@@ -31,6 +33,8 @@ export const ROUTES = [
     title: 'InteractiveCubesOrtho',
     category: 'faq_log',
     component: InteractiveCubesOrtho,
+    image: require('resources/InteractiveCubesOrtho.jpg'),
+    imageGif: require('resources/InteractiveCubesOrtho.gif'),
   },
   {
     path: '/InteractiveTextsOrtho',
@@ -39,6 +43,8 @@ export const ROUTES = [
     title: 'InteractiveTextsOrtho',
     category: 'faq_log',
     component: InteractiveTextsOrtho,
+    image: require('resources/InteractiveTextsOrtho.jpg'),
+    imageGif: require('resources/InteractiveTextsOrtho.gif'),
   },
   {
     path: '/Montage',
@@ -47,6 +53,8 @@ export const ROUTES = [
     title: 'Montage',
     category: 'faq_log',
     component: Montage,
+    image: require('resources/Montage.jpg'),
+    imageGif: require('resources/Montage.gif'),
   },
   {
     path: '/HelloGravity',
@@ -55,6 +63,8 @@ export const ROUTES = [
     title: 'HelloGravity',
     category: 'faq_log',
     component: HelloText,
+    image: require('resources/HelloGravity.jpg'),
+    imageGif: require('resources/HelloGravity.gif'),
   },
   {
     path: '/WonderfulChandrasekhar',
@@ -63,6 +73,8 @@ export const ROUTES = [
     title: 'WonderfulChandrasekhar',
     category: 'faq_log',
     component: WonderfulChandrasekhar,
+    image: require('resources/WonderfulChandrasekhar.jpg'),
+    imageGif: require('resources/WonderfulChandrasekhar.gif'),
   },
   {
     path: '*',

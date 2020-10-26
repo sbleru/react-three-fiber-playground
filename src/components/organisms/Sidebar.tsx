@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { ROUTES } from 'constants/Route';
 import { Drawer, IconButton } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import sampleGif from 'resources/InteractiveCubesOrtho.gif'
 import sample from 'resources/InteractiveCubesOrtho.png'
 import { Img3DCard } from 'components/atoms/3DCard';
 
@@ -47,7 +48,7 @@ const Sidebar: React.FC<Props> = (props) => {
                 css={classes.listItem(active)}
                 onClick={() => handleChangeRouter(route.path)}
               >
-                <Img3DCard src={sample} active={active} />
+                <Img3DCard src={route.image} srcGif={route.imageGif} active={active} />
               </div>
             );
           })}
