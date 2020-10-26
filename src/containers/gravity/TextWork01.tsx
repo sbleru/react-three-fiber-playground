@@ -2,7 +2,7 @@
 import { css, jsx } from '@emotion/core';
 import ReactDOM from 'react-dom'
 import * as THREE from 'three'
-import React, { Suspense, useEffect, useRef, useState } from 'react'
+import React, { Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { Canvas, useLoader, useFrame } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import Text, { TextWithCannon } from 'components/Text'
@@ -44,7 +44,7 @@ const CanvasWork: React.FC<CanvasWorkProps> = (props) => {
       <pointLight position={[40, 40, 40]} />
       <Provider>
         <Suspense fallback={null}>
-          <Plane position={[0, 0, -400]} />
+          <Plane position={[0, 0, -300]} />
           {/* <HelloWorld /> */}
           {
             props.textObjects.map((text, i) => {
@@ -69,18 +69,23 @@ export const HelloText = () => {
 
   const [textObjects, setTextObjects] = useState<string[]>([])
 
-  const createTextObjects = (e: any) => {
-    // const text = e.currentTarget.value
-    // if (text.length < 10) {
-    //   return
-    // }
-    const value = e.currentTarget.value.slice(-1)
-    setTextObjects([...textObjects, value])
-  }
+  const createTextObjects = useCallback((e: any) => {
+    if (e.key === "Escape") {
+      setTextObjects([])
+    } else {
+      setTextObjects(textObjects.concat(e.key))
+    }
+  }, [textObjects]);
+
+  useEffect(() => {
+    document.addEventListener("keydown", createTextObjects)
+    return () => {
+      document.removeEventListener("keydown", createTextObjects)
+    }
+  }, [createTextObjects])
 
   return (
     <div css={theme}>
-      <input type="text" onChange={createTextObjects}/>
       <CanvasWork textObjects={textObjects} />
     </div>
   )
